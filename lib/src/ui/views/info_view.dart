@@ -2,6 +2,7 @@ import 'package:anime_streaming/src/ui/components/episode_card.dart';
 import 'package:anime_streaming/src/ui/themes/global.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class InfoView extends StatefulWidget {
   const InfoView({super.key});
@@ -18,7 +19,21 @@ class _InfoViewState extends State<InfoView> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         extendBody: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(
+                FontAwesomeIcons.chevronLeft,
+                color: Colors.white,
+              )),
+        ),
         body: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
@@ -186,6 +201,7 @@ class _InfoViewState extends State<InfoView> {
                           setState(() {
                             showFullDescription = !showFullDescription;
                           });
+                          Get.snackbar('HELLO', 'AIDANNNNNNN');
                         },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 400),
@@ -237,6 +253,7 @@ class _InfoViewState extends State<InfoView> {
                     height: 500.0,
                     margin: EdgeInsets.symmetric(horizontal: 20.0),
                     child: ListView.builder(
+                      padding: EdgeInsets.zero,
                       itemCount: 7,
                       itemBuilder: ((context, index) {
                         return Padding(
